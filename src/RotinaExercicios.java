@@ -3,7 +3,8 @@ import java.util.Scanner;
 public class RotinaExercicios {
     private static int Id = 1;
 
-    public static void adicionarExercicio(String[] exercicios, int[] ids, boolean[] concluidos, int tamanho) {
+    public static void adicionarExercicio(String[] exercicios, int[] ids, boolean[] concluidos) {
+        int id;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Insira o nome do exercício: ");
         String nomeExercicio = scanner.nextLine();
@@ -17,12 +18,12 @@ public class RotinaExercicios {
         System.out.println("Insira o número de séries: ");
         int seriesExercicio = scanner.nextInt();
 
-        int id = Id;
+        id = Id;
         Id++;
 
-        for (int i = 0; i < tamanho; i++) {
+        for (int i = 0; i < exercicios.length; i++) {
             if (exercicios[i] == null) {
-                exercicios[i] = "ID: " + id + " | " + nomeExercicio + " | Carga: " + cargaExercicio + " kg | Repetições: " + repeticaoExercicio + "| Séries: " + seriesExercicio;
+                exercicios[i] = "ID: " + id + " | " + nomeExercicio + " | Carga: " + cargaExercicio + " kg | Repetições: " + repeticaoExercicio + " | Séries: " + seriesExercicio;
                 ids[i] = id;
                 concluidos[i] = false;
                 System.out.println("Exercício adicionado.");
@@ -32,6 +33,7 @@ public class RotinaExercicios {
 
         System.out.println("Não foi possível adicionar o exercício. A lista está cheia.");
     }
+
 
     public static void mostrarExercicios(String[] exercicios, boolean[] concluidos) {
         System.out.println("Exercícios:");
@@ -74,15 +76,15 @@ public class RotinaExercicios {
 
     public static void mostrarExerciciosConcluidos(String[] exercicios, boolean[] concluidos) {
         System.out.println("Exercícios concluídos:");
-        boolean haExerciciosConcluidos = false;
+        boolean ExerciciosConcluidos = false;
         for (int i =0; i < exercicios.length; i++) {
             if (exercicios[i] != null && concluidos[i]) {
                 System.out.println(exercicios[i]);
-                haExerciciosConcluidos = true;
+                ExerciciosConcluidos = true;
             }
         }
 
-        if (!haExerciciosConcluidos) {
+        if (!ExerciciosConcluidos) {
             System.out.println("Não há exercícios concluídos.");
         }
     }
@@ -109,7 +111,7 @@ public class RotinaExercicios {
                     System.out.println("Obrigado por usar esse programa!");
                     break;
                 case 1:
-                    adicionarExercicio(listaExercicios, listaIds, listaConcluidos, maxExercicios);
+                    adicionarExercicio(listaExercicios, listaIds, listaConcluidos);
                     break;
                 case 2:
                     mostrarExercicios(listaExercicios, listaConcluidos);
